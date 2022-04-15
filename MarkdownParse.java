@@ -19,6 +19,15 @@ public class MarkdownParse {
         }
     }
 
+    public static int parens (String link) {
+        int count = 0;
+        for (int i = 0; i < link.length(); i++) {
+            if (link.charAt(i) == '(') count++;
+            if (link.charAt(i) == ')') count--;
+        }
+        return count;
+    }
+
     public static ArrayList<String> getLinks(String markdown) {
         ArrayList<String> toReturn = new ArrayList<>();
         // find the next [, then find the ], then find the (, then read link upto next )
@@ -30,6 +39,11 @@ public class MarkdownParse {
             int closeParen = markdown.indexOf(")", openParen);
 
             String link = markdown.substring(openParen + 1, closeParen);
+
+            while (parens(link) != 0) {
+                closeParen = markdown.indexOf(")", closeParen + 1);
+                link = markdown.substring(openParen + 1, closeParen);
+            }
 
             if (openBracket < 0) { // No brackets
                 if (isValid(link)) { toReturn.add(link); }
