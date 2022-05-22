@@ -49,7 +49,7 @@ public class MarkdownParseTest { // Creates class MarkdownParseTest
     @Test
     public void testSnippet1() throws IOException {
         ArrayList<String> exp = new ArrayList<String>();
-        exp.add("`google.com");
+        exp.add("\`google.com");
         exp.add("google.com");
         exp.add("ucsd.edu");
 
