@@ -45,7 +45,7 @@ public class MarkdownParse {
                 link = markdown.substring(openParen + 1, closeParen);
             }
 
-            if (openBracket < 0) { // No brackets
+            if (openBracket < 0) { 
                 if (isValid(link)) { toReturn.add(link); }
             } else if  (openBracket > 0) {
                 if (!(markdown.charAt(openBracket - 1) == '!')) { toReturn.add(link); }
